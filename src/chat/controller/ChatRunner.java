@@ -10,7 +10,7 @@ public class ChatRunner
 {
 	public static void main (String [] args)
 	{
-		//ChatController myController = new ChatController();
-		//myController.start();
+		ChatController myController = new ChatController();
+		myController.start();
 	}
 }
