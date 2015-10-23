@@ -21,10 +21,10 @@ public class ChatBot
 	 */
 	public ChatBot(String userName)
 	{
-		this.memesList = memesList;
-		this.politicalTopicList = politicalTopicList;
+		this.memesList = new ArrayList<String>();	//Memes required: Me gusta, Troll, Aliens, Doge, Bad Luck Brian, Unhelpful Highschool Teacher, Cute Animals, Spoderman, Rare pepe, What if I told you.
+		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
-		this.content = content;
+		this.content = "";
 	}
 	
 	private void buildMemesList()
