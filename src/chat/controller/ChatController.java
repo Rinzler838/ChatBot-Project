@@ -12,17 +12,36 @@ import chat.model.ChatBot;
 public class ChatController
 {
 	private ChatBot myBot;
-	private ChatView displayText;
+	private ChatView myDisplay;
 
 	public ChatController()
 	{
-		displayText = new ChatView();
-		String userName = displayText.chatInput("What is your name?");
+		myDisplay = new ChatView();
+		String userName = myDisplay.chatInput("What is your name?");
 		myBot = new ChatBot(userName);
 	}
 	
 	public void start()
 	{
-		displayText.chatInput("Hello " + myBot.getUserName());
+		myDisplay.chatInput("Hello " + myBot.getUserName());
+		chat();
 	}
+	
+	private void chat()
+	{
+		String conversation = myDisplay.chatInput("What yould you like to talk about today?");
+		while (myBot.lengthChecker(conversation))
+		{
+		if (myBot.contentChecker(conversation))
+			{
+			myDisplay.showMessage("Wow, I had no idea you were interested in " + myBot.getContent());
+			} 
+		
+			conversation = myDisplay.chatInput(conversation);
+		}
+	}
+
+	
+	//private void shutDown()
+	
 }

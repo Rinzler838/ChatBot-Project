@@ -5,16 +5,16 @@ import javax.swing.JOptionPane;
 public class ChatView
 {
 	
-	public void displayText(String displayText)
+	public void showMessage(String myDisplay)
 	{
-		JOptionPane.showMessageDialog(null, displayText);
+		JOptionPane.showMessageDialog(null, myDisplay);
 	}
 	
 	public String chatInput(String displayText)
 	{
 		String returnedText = "";
 		
-		returnedText = JOptionPane.showInputDialog(null, returnedText);
+		returnedText = JOptionPane.showInputDialog(null, displayText);
 		
 		return returnedText;
 	}
