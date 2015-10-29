@@ -39,6 +39,11 @@ public class ChatController
 		
 			conversation = myDisplay.chatInput(conversation);
 		}
+		
+		if (memeChecker = true)
+		{
+			System.out.println("Success!")
+		}
 	}
 
 	
