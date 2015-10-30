@@ -23,7 +23,7 @@ public class ChatController
 	
 	public void start()
 	{
-		myDisplay.chatInput("Hello " + myBot.getUserName());
+		myDisplay.showMessage("Hello " + myBot.getUserName());
 		chat();
 	}
 	
@@ -34,17 +34,13 @@ public class ChatController
 		{
 		if (myBot.contentChecker(conversation))
 			{
-			myDisplay.showMessage("Wow, I had no idea you were interested in " + myBot.getContent());
+			myDisplay.chatInput("Wow, I had no idea you were interested in " + myBot.getContent());
 			} 
 		
 			conversation = myDisplay.chatInput(conversation);
 		}
 		
-		if (memeChecker = true)
-		{
-			System.out.println("Success!")
-		}
-	}
+}
 
 	
 	//private void shutDown()

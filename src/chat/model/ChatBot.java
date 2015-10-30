@@ -25,12 +25,7 @@ public class ChatBot
 	 */
 	public ChatBot(String userName)
 	{
-		this.memesList = new ArrayList<String>(); // Memes required: Me gusta,
-													// Troll, Aliens, Doge, Bad
-													// Luck Brian, Unhelpful
-													// Highschool Teacher, Cute
-													// Animals, Spoderman, Rare
-													// pepe, What if I told you.
+		this.memesList = new ArrayList<String>(); 
 		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
 		this.content = "Infinity Blade";
@@ -133,18 +128,16 @@ public class ChatBot
 	public boolean memeChecker(String currentInput)
 	{
 		boolean hasMeme = false;
-		int index = 0;
 		
-		while (memesList.size() > index)
+		for (String currentMeme:memesList)
 		{
-			if (memesList.get(index))
-			index++;	
+			if (currentMeme.equalsIgnoreCase(currentInput))
 			{
 				hasMeme = true;
 			}
 		}
 		
-		return false;
+		return hasMeme;
 	}
 
 	/**
