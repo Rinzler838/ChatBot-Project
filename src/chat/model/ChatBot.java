@@ -50,7 +50,20 @@ public class ChatBot
 
 	private void buildPoliticalTopicsList()
 	{
-
+		this.politicalTopicList.add("election");
+		this.politicalTopicList.add("Democrat");
+		this.politicalTopicList.add("Republican");
+		this.politicalTopicList.add("liberal");
+		this.politicalTopicList.add("conservative");
+		this.politicalTopicList.add("Trump");
+		this.politicalTopicList.add("Clinton");
+		this.politicalTopicList.add("Biden");
+		this.politicalTopicList.add("Carson");
+		this.politicalTopicList.add("Rubio");
+		this.politicalTopicList.add("Fiorina");
+		this.politicalTopicList.add("Sanders");
+		this.politicalTopicList.add("vote");
+		
 	}
 
 	/**
@@ -114,7 +127,17 @@ public class ChatBot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean hasPoliticalTopic = false;
+		
+		for (String currentTopic : politicalTopicList)
+		{
+			if (currentInput.toLowerCase().contains(currentTopic.toLowerCase()))
+			{
+				hasPoliticalTopic = true;
+			}
+		}
+		
+		return hasPoliticalTopic;
 	}
 
 	/**
@@ -129,9 +152,9 @@ public class ChatBot
 	{
 		boolean hasMeme = false;
 		
-		for (String currentMeme:memesList)
+		for (String currentMeme : memesList)
 		{
-			if (currentMeme.equalsIgnoreCase(currentInput))
+			if (currentInput.toLowerCase().contains(currentMeme.toLowerCase()))
 			{
 				hasMeme = true;
 			}

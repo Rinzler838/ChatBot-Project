@@ -33,16 +33,25 @@ public class ChatController
 		while (myBot.lengthChecker(conversation))
 		{
 		if (myBot.contentChecker(conversation))
-			{
-			myDisplay.chatInput("Wow, I had no idea you were interested in " + myBot.getContent());
-			} 
-		
-			conversation = myDisplay.chatInput(conversation);
+		{
+			myDisplay.showMessage("Wow, I had no idea you were interested in " + myBot.getContent() + "...");
+		} 
+		else if (myBot.memeChecker(conversation))
+		{
+			myDisplay.showMessage("What a lame meme...");
+		}
+		else if (myBot.politicalTopicChecker(conversation))
+		{
+			myDisplay.showMessage("I hate politics...");
 		}
 		
-}
+		conversation = myDisplay.chatInput(conversation);
+		
+		
+	}
 
 	
 	//private void shutDown()
 	
+}
 }
