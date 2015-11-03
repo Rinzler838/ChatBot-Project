@@ -25,7 +25,7 @@ public class ChatBot
 	 */
 	public ChatBot(String userName)
 	{
-		this.memesList = new ArrayList<String>(); 
+		this.memesList = new ArrayList<String>();
 		this.politicalTopicList = new ArrayList<String>();
 		this.userName = userName;
 		this.content = "Infinity Blade";
@@ -63,7 +63,6 @@ public class ChatBot
 		this.politicalTopicList.add("Fiorina");
 		this.politicalTopicList.add("Sanders");
 		this.politicalTopicList.add("vote");
-		
 	}
 
 	/**
@@ -128,7 +127,7 @@ public class ChatBot
 	public boolean politicalTopicChecker(String currentInput)
 	{
 		boolean hasPoliticalTopic = false;
-		
+
 		for (String currentTopic : politicalTopicList)
 		{
 			if (currentInput.toLowerCase().contains(currentTopic.toLowerCase()))
@@ -136,7 +135,7 @@ public class ChatBot
 				hasPoliticalTopic = true;
 			}
 		}
-		
+
 		return hasPoliticalTopic;
 	}
 
@@ -151,7 +150,7 @@ public class ChatBot
 	public boolean memeChecker(String currentInput)
 	{
 		boolean hasMeme = false;
-		
+
 		for (String currentMeme : memesList)
 		{
 			if (currentInput.toLowerCase().contains(currentMeme.toLowerCase()))
@@ -159,8 +158,50 @@ public class ChatBot
 				hasMeme = true;
 			}
 		}
-		
+
 		return hasMeme;
+	}
+
+	public String processConversation(String currentInput)
+	{
+		String nextConversation = "What else would you like to converse?";
+		int randomTopic = (int) (Math.random() * 5);	//Generates a random number between 0 & 4.
+		switch (randomTopic)
+		{
+			case 0:
+				if (memeChecker(currentInput))
+				{
+					nextConversation = "I'm told that that is quite a popular meme at this time. What else would you " 
+							+ "like to discuss?";
+				}
+				break;
+			case 1:
+				if (politicalTopicChecker(currentInput))
+				{
+					nextConversation = "I despise politics...";
+				}
+				break;
+			case 2:
+				if (contentChecker(currentInput))
+				{
+					nextConversation = "I am also interested in " + content;
+				}
+				break;
+			case 3:
+				if (currentInput.length() > 20)
+				{@
+					nextConversation = "Too...many...words...can't...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136";
+				}
+				break;
+			case 4:
+				nextConversation = "Insert words here...";
+				break;
+			default:
+				nextConversation = "The universe has ended. End of Line.";
+				break;
+		}			
+					
+		return nextConversation;
 	}
 
 	/**

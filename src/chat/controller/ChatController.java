@@ -17,41 +17,28 @@ public class ChatController
 	public ChatController()
 	{
 		myDisplay = new ChatView();
-		String userName = myDisplay.chatInput("What is your name?");
+		String userName = myDisplay.chatInput("Please type your designated moniker in the box below.");
 		myBot = new ChatBot(userName);
 	}
 	
 	public void start()
 	{
-		myDisplay.showMessage("Hello " + myBot.getUserName());
+		myDisplay.showMessage("Greetings User: " + myBot.getUserName());
 		chat();
 	}
 	
 	private void chat()
-	{
-		String conversation = myDisplay.chatInput("What yould you like to talk about today?");
+	{		
+		String conversation = myDisplay.chatInput("What yould you like to discuss at this time?");
 		while (myBot.lengthChecker(conversation))
 		{
-		if (myBot.contentChecker(conversation))
-		{
-			myDisplay.showMessage("Wow, I had no idea you were interested in " + myBot.getContent() + "...");
-		} 
-		else if (myBot.memeChecker(conversation))
-		{
-			myDisplay.showMessage("What a lame meme...");
-		}
-		else if (myBot.politicalTopicChecker(conversation))
-		{
-			myDisplay.showMessage("I hate politics...");
-		}
-		
-		conversation = myDisplay.chatInput(conversation);
-		
-		
+			conversation = myDisplay.chatInput(myBot.processConversation(conversation));
+		}	
 	}
 
-	
-	//private void shutDown()
+	private void shutDown()
+	{
+		myDisplay.showMessage("Farewell, " + myBot.getUserName());
 	
 }
 }
