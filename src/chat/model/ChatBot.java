@@ -240,8 +240,8 @@ public class ChatBot
 	 * @return The reference to the political topic list.
 	 */
 	public ArrayList<String> getPoliticalTopicList()
-	{
-		return null;
+	{		
+		return politicalTopicList;
 	}
 
 	/**
