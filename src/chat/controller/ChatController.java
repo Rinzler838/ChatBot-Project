@@ -17,19 +17,19 @@ public class ChatController
 	public ChatController()
 	{
 		myDisplay = new ChatView();
-		String userName = myDisplay.chatInput("Please type your designated moniker in the box below.");
+		String userName = myDisplay.chatInput("bzzzt...Please type your designated moniker in the box below...bzzzt");
 		myBot = new ChatBot(userName);
 	}
 	
 	public void start()
 	{
-		myDisplay.showMessage("Greetings User: " + myBot.getUserName());
+		myDisplay.showMessage("User: " + myBot.getUserName() + "Greetings...bzzzt");
 		chat();
 	}
 	
 	private void chat()
 	{		
-		String conversation = myDisplay.chatInput("What yould you like to discuss at this time?");
+		String conversation = myDisplay.chatInput("bzzzt...What yould you like to discuss at this time?");
 		while (myBot.lengthChecker(conversation))
 		{
 			conversation = myDisplay.chatInput(myBot.processConversation(conversation));
@@ -38,7 +38,7 @@ public class ChatController
 
 	private void shutDown()
 	{
-		myDisplay.showMessage("Farewell, " + myBot.getUserName());
+		myDisplay.showMessage("bzzzt...Farewell, " + myBot.getUserName() + "I'll be going now...bzzzt");
 	
 }
 }

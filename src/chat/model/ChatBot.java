@@ -171,26 +171,26 @@ public class ChatBot
 			case 0:
 				if (memeChecker(currentInput))
 				{
-					nextConversation = "I'm told that that is quite a popular meme at this time. What else would you " 
-							+ "like to discuss?";
+					nextConversation = "bzzt...My memory banks tell me that that is quite a popular meme at this time. What else would you " 
+							+ "like to discuss? bzzzt";
 				}
 				break;
 			case 1:
 				if (politicalTopicChecker(currentInput))
 				{
-					nextConversation = "I despise politics...";
+					nextConversation = "bzzzt...I despise politics...bzzzt";
 				}
 				break;
 			case 2:
 				if (contentChecker(currentInput))
 				{
-					nextConversation = "I am also interested in " + content;
+					nextConversation = "bzzzt...I am also interested in " + content + "...bzzzt";
 				}
 				break;
 			case 3:
 				if (currentInput.length() > 20)
 				{
-					nextConversation = "Too...many...words...can't...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136";
+					nextConversation = "...bzzzt...Too...many...words...can't...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136.........b...............z..............z............z.................t...............";
 				}
 				break;
 			case 4:
