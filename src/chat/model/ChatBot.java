@@ -189,7 +189,7 @@ public class ChatBot
 				break;
 			case 3:
 				if (currentInput.length() > 20)
-				{@
+				{
 					nextConversation = "Too...many...words...can't...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136";
 				}
 				break;
