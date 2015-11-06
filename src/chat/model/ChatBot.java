@@ -194,10 +194,10 @@ public class ChatBot
 				}
 				break;
 			case 4:
-				nextConversation = "Insert words here...";
+				nextConversation = "bzzzt...What would you like to discuss next?";
 				break;
 			default:
-				nextConversation = "The universe has ended. End of Line.";
+				nextConversation = "bzzzt...The universe has ended...End of Line...bzzzt";
 				break;
 		}			
 					
