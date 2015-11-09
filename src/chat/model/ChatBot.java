@@ -76,16 +76,6 @@ public class ChatBot
 	{
 		boolean hasLength = false;
 
-		if (currentInput != null)
-		{
-			if (currentInput.length() != 1)
-			{
-				hasLength = true;
-			}
-		}
-
-		// Alternate method: Compound "if"
-
 		if (currentInput != null && currentInput.length() > 0)
 		{
 			hasLength = true;
@@ -164,7 +154,7 @@ public class ChatBot
 
 	public String processConversation(String currentInput)
 	{
-		String nextConversation = "What else would you like to converse?";
+		String nextConversation = "bzzzt...What else would you like to converse?";
 		int randomTopic = (int) (Math.random() * 5);	//Generates a random number between 0 & 4.
 		switch (randomTopic)
 		{
@@ -190,7 +180,7 @@ public class ChatBot
 			case 3:
 				if (currentInput.length() > 20)
 				{
-					nextConversation = "...bzzzt...Too...many...words...can't...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136.........b...............z..............z............z.................t...............";
+					nextConversation = "...bzzzt...Too...many...words...cannot...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136.........b...............z..............z............z.................t...............";
 				}
 				break;
 			case 4:

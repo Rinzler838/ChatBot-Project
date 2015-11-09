@@ -23,7 +23,7 @@ public class ChatController
 	
 	public void start()
 	{
-		myDisplay.showMessage("User: " + myBot.getUserName() + "Greetings...bzzzt");
+		myDisplay.showMessage("User: " + myBot.getUserName() + " Greetings...bzzzt");
 		chat();
 	}
 	
@@ -38,7 +38,7 @@ public class ChatController
 
 	private void shutDown()
 	{
-		myDisplay.showMessage("bzzzt...Farewell, " + myBot.getUserName() + "I'll be going now...bzzzt");
-	
+		myDisplay.showMessage("bzzzt...Farewell " + myBot.getUserName() + ", I'll be going now...bzzzt");
+	}
 }
-}
+
