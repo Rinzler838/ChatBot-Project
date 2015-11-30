@@ -102,7 +102,18 @@ public class ChatBot
 		}
 
 		return hasContent;
-
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean hasMash = false;
+		
+		if (currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+		{
+			hasMash = true;
+		}
+		
+		return hasMash;
 	}
 
 	/**
@@ -151,6 +162,18 @@ public class ChatBot
 
 		return hasMeme;
 	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean hasQuit = false;
+		
+		if (currentInput.toLowerCase().equals("quit"))
+		{
+			hasQuit = true;
+		}
+		
+		return hasQuit;
+	}
 
 	public String processConversation(String currentInput)
 	{
@@ -193,6 +216,8 @@ public class ChatBot
 					
 		return nextConversation;
 	}
+	
+	
 
 	/**
 	 * Returns the username of this Chatbot instance.
@@ -244,4 +269,5 @@ public class ChatBot
 	{
 
 	}
+	
 }
