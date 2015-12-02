@@ -39,13 +39,14 @@ public class ChatBot
 		this.memesList.add("Me Gusta");
 		this.memesList.add("Troll");
 		this.memesList.add("\"Aliens\"");
-		this.memesList.add("Doge");
+		this.memesList.add("doge");
 		this.memesList.add("Bad Luck Brian");
 		this.memesList.add("Unhelpful Highschool Teacher");
 		this.memesList.add("Cute Animals");
 		this.memesList.add("Spoderman");
 		this.memesList.add("Rare Pepe");
 		this.memesList.add("What if I told you...");
+		this.memesList.add("cute animals");
 	}
 
 	private void buildPoliticalTopicsList()
@@ -63,6 +64,7 @@ public class ChatBot
 		this.politicalTopicList.add("Fiorina");
 		this.politicalTopicList.add("Sanders");
 		this.politicalTopicList.add("vote");
+		this.politicalTopicList.add("11/4/16");
 	}
 
 	/**
@@ -70,6 +72,7 @@ public class ChatBot
 	 * String is empty or null, otherwise returns true.
 	 * 
 	 * @param currentInput
+	 * 			The supplied String to be checked.
 	 * @return A true or false based on the length of the supplied String.
 	 */
 	public boolean lengthChecker(String currentInput)
@@ -104,11 +107,18 @@ public class ChatBot
 		return hasContent;
 	}
 	
+	/**
+	 * Checks to see if the supplied String contains specific keyboard mash.
+	 * 
+	 * @param currentInput
+	 * 			The supplied String to be checked.
+	 * @return Whether the supplied String contains keyboard mash.
+	 */
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean hasMash = false;
 		
-		if (currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+		if (currentInput.toLowerCase().contains("sdf") || currentInput.toLowerCase().contains("dfg") || currentInput.toLowerCase().contains("cvb") || currentInput.toLowerCase().contains(",./"))
 		{
 			hasMash = true;
 		}
@@ -163,6 +173,13 @@ public class ChatBot
 		return hasMeme;
 	}
 	
+	/**
+	 * Checks to see if the user typed quit or not.
+	 * 	
+	 * @param currentInput
+	 * 			The supplied String to be checked.
+	 * @return Whether the supplied String says quit.
+	 */
 	public boolean quitChecker(String currentInput)
 	{
 		boolean hasQuit = false;
@@ -174,18 +191,29 @@ public class ChatBot
 		
 		return hasQuit;
 	}
-
+	
+	/**
+	 * Determines what to say based on which of the text checkers passed true.
+	 * @param currentInput
+	 * 			The supplied String to be checked.
+	 * @return The String to be displayed as the response.
+	 */
 	public String processConversation(String currentInput)
 	{
 		String nextConversation = "bzzzt...What else would you like to converse?";
 		int randomTopic = (int) (Math.random() * 5);	//Generates a random number between 0 & 4.
+		
+		if (keyboardMashChecker(currentInput))
+		{
+			return "bzzzt...Please stop mashing that innocent keyboard...bzzzt";
+		}
+		
 		switch (randomTopic)
 		{
 			case 0:
 				if (memeChecker(currentInput))
 				{
-					nextConversation = "bzzt...My memory banks tell me that that is quite a popular meme at this time. What else would you " 
-							+ "like to discuss? bzzzt";
+					nextConversation = "bzzt...My memory banks tell me that that is quite a popular meme at this time. What else would you " + "like to discuss? bzzzt";
 				}
 				break;
 			case 1:
@@ -217,8 +245,6 @@ public class ChatBot
 		return nextConversation;
 	}
 	
-	
-
 	/**
 	 * Returns the username of this Chatbot instance.
 	 * 
@@ -267,7 +293,7 @@ public class ChatBot
 	 */
 	public void setContent(String content)
 	{
-
+		this.content = content;
 	}
 	
 }

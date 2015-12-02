@@ -1,4 +1,4 @@
-package chat.controller;
+ package chat.controller;
 
 import chat.view.ChatFrame;
 import chat.view.ChatView;
@@ -26,17 +26,31 @@ public class ChatController
 	
 	public void start()
 	{
-		myDisplay.showMessage("User: " + myBot.getUserName() + " Greetings...bzzzt");
+		myDisplay.showMessage("Greetings, User: " + myBot.getUserName());
 		chat();
 	}
 	
 	private void chat()
 	{		
 		String conversation = myDisplay.chatInput("bzzzt...What yould you like to discuss at this time?");
-		while (myBot.lengthChecker(conversation))
+		//while (myBot.lengthChecker(conversation))
+		//{
+		//	conversation = myDisplay.chatInput(myBot.processConversation(conversation));
+		//}	
+	}
+	
+	public String userToChatBot(String conversationText)
+	{
+		String response = "";
+		
+		if (myBot.quitChecker(conversationText))
 		{
-			conversation = myDisplay.chatInput(myBot.processConversation(conversation));
-		}	
+			shutDown();
+		}
+		
+		response = myBot.processConversation(conversationText);
+		
+		return response;
 	}
 
 	private void shutDown()

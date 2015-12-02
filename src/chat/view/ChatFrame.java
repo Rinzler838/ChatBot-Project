@@ -16,10 +16,14 @@ public class ChatFrame extends JFrame
 		setupFrame();
 	}
 	
+	/**
+	 * Required helper method to prepare the frame.
+	 */
+	
 	private void setupFrame()
 	{
 		this.setContentPane(botPanel);
-		this.setSize(400,600);
+		this.setSize(450,305);
 		this.setTitle("Welcome to Chatbot");
 		this.setResizable(true);
 		this.setVisible(true);
