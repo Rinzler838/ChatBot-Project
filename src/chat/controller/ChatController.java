@@ -34,6 +34,7 @@ public class ChatController
 	
 	/**
 	 * Allows Chatbot to process text and return a response.
+	 * 
 	 * @param conversationText
 	 * @return A response
 	 */
@@ -62,6 +63,7 @@ public class ChatController
 	
 	/**
 	 * Returns instance of Chatbot when it is called.
+	 * 
 	 * @return myBot
 	 */
 	public ChatBot getChatBot()
@@ -71,6 +73,7 @@ public class ChatController
 	
 	/**
 	 * Returns instance of ChatView when it is called.
+	 * 
 	 * @return myDisplay
 	 */
 	public ChatView getChatView()
@@ -80,6 +83,7 @@ public class ChatController
 	
 	/**
 	 * Returns instance of ChatFrame when it is called.
+	 * 
 	 * @return baseFrame
 	 */
 	public ChatFrame getBaseFrame()

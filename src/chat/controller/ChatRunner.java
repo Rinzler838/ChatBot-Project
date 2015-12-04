@@ -3,7 +3,7 @@ package chat.controller;
 /**
  * Starts the program.
  * @author Deigen Villalobos
- * @version 1.0 10/21/15
+ * @version 1.0 10/21/15 Wrote Runner.
  */
 
 public class ChatRunner

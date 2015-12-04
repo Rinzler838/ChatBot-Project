@@ -198,6 +198,7 @@ public class ChatBot
 	
 	/**
 	 * Determines what to say based on chance and which of the text checkers passed true.
+	 * 
 	 * @param currentInput
 	 * 			The supplied String to be checked.
 	 * @return The String to be displayed as the response.

@@ -36,6 +36,7 @@ public class ChatFrame extends JFrame
 	
 	/**
 	 * Returns instance of ChatController when called.
+	 * 
 	 * @return botController
 	 */
 	public ChatController getBaseController()
