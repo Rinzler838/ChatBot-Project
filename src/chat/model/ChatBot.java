@@ -3,12 +3,10 @@ package chat.model;
 import java.util.ArrayList;
 
 /**
- * Base version of the 2015 Chatbot class. Only stub methods are provided.
- * Students will complete methods as part of the project.
- * 
+ * Base version of the 2015 Chatbot class.
  * @author Deigen Villalobos
- * @version 1.2 10/23/15 Completed the length checker method. Fixed the
- *          Constructor and getter for userName.
+ * @version 1.6 12/4/15 Fixed ChatTest related Errors, and added documentation.
+ *          
  */
 public class ChatBot
 {
@@ -34,6 +32,9 @@ public class ChatBot
 		buildPoliticalTopicsList();
 	}
 
+	/**
+	 * Builds MemesList by adding contents.
+	 */
 	private void buildMemesList()
 	{
 		this.memesList.add("Me Gusta");
@@ -49,6 +50,9 @@ public class ChatBot
 		this.memesList.add("cute animals");
 	}
 
+	/**
+	 * Builds PoliticalTopicList by adding content.
+	 */
 	private void buildPoliticalTopicsList()
 	{
 		this.politicalTopicList.add("election");
@@ -193,7 +197,7 @@ public class ChatBot
 	}
 	
 	/**
-	 * Determines what to say based on which of the text checkers passed true.
+	 * Determines what to say based on chance and which of the text checkers passed true.
 	 * @param currentInput
 	 * 			The supplied String to be checked.
 	 * @return The String to be displayed as the response.
@@ -213,7 +217,11 @@ public class ChatBot
 			case 0:
 				if (memeChecker(currentInput))
 				{
-					nextConversation = "bzzt...My memory banks tell me that that is quite a popular meme at this time. What else would you " + "like to discuss? bzzzt";
+					nextConversation = "bzzzt...My memory banks tell me that that is quite a popular meme at this time. What else would you " + "like to discuss? bzzzt";
+				}
+				else
+				{
+					nextConversation = "bzzzt...Do you not like memes?...bzzzt";
 				}
 				break;
 			case 1:
@@ -221,17 +229,29 @@ public class ChatBot
 				{
 					nextConversation = "bzzzt...I despise politics...bzzzt";
 				}
+				else
+				{
+					nextConversation = "bzzzt...I take it you don't like politics either...bzzzt";
+				}
 				break;
 			case 2:
 				if (contentChecker(currentInput))
 				{
 					nextConversation = "bzzzt...I am also interested in " + content + "...bzzzt";
 				}
+				else
+				{
+					nextConversation = "bzzzt...Not interested in " + content + " either?...bzzzt";
+				}
 				break;
 			case 3:
 				if (currentInput.length() > 20)
 				{
 					nextConversation = "...bzzzt...Too...many...words...cannot...process...1nf0rm4t10n...n0w...$#ut1ng...d0wn...@$%^!@#$5#%&!345@#$%346&$563&*58134#%^*!~273647132136.........b...............z..............z............z.................t...............";
+				}
+				else
+				{
+					nextConversation = "bzzzt...Please continue typing...bzzzt";
 				}
 				break;
 			case 4:

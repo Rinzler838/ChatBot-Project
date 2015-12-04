@@ -7,7 +7,7 @@ import chat.model.ChatBot;
 /**
  * Application controller for the Chatbot project.
  * @author Deigen Villalobos
- * @version 1.11 10/21/15 added reference to display, and got an error.
+ * @version 1.5 12/4/15 Deleted useless Chat() method, and
  */
 
 public class ChatController
@@ -19,26 +19,24 @@ public class ChatController
 	public ChatController()
 	{
 		myDisplay = new ChatView();
-		String userName = myDisplay.chatInput("bzzzt...Please type your designated moniker in the box below...bzzzt");
+		String userName = myDisplay.chatInput("Please type your Username below:");
 		myBot = new ChatBot(userName);
 		baseFrame = new ChatFrame(this);
 	}
 	
+	/**
+	 * Method to initiate program via Runner, and getting the user's name.
+	 */
 	public void start()
 	{
-		myDisplay.showMessage("Greetings, User: " + myBot.getUserName());
-		chat();
+		myDisplay.showMessage("Username: " + myBot.getUserName() + " \n Please press \"ENTER\" to continue");
 	}
 	
-	private void chat()
-	{		
-		String conversation = myDisplay.chatInput("bzzzt...What yould you like to discuss at this time?");
-		//while (myBot.lengthChecker(conversation))
-		//{
-		//	conversation = myDisplay.chatInput(myBot.processConversation(conversation));
-		//}	
-	}
-	
+	/**
+	 * Allows Chatbot to process text and return a response.
+	 * @param conversationText
+	 * @return A response
+	 */
 	public String userToChatBot(String conversationText)
 	{
 		String response = "";
@@ -53,22 +51,37 @@ public class ChatController
 		return response;
 	}
 
+	/**
+	 * Kills program after bidding a fond farewell.
+	 */
 	private void shutDown()
 	{
 		myDisplay.showMessage("bzzzt...Farewell " + myBot.getUserName() + ", I'll be going now...bzzzt");
 		System.exit(0);
 	}
 	
+	/**
+	 * Returns instance of Chatbot when it is called.
+	 * @return myBot
+	 */
 	public ChatBot getChatBot()
 	{
 		return myBot;
 	}
 	
+	/**
+	 * Returns instance of ChatView when it is called.
+	 * @return myDisplay
+	 */
 	public ChatView getChatView()
 	{
 		return myDisplay;
 	}
 	
+	/**
+	 * Returns instance of ChatFrame when it is called.
+	 * @return baseFrame
+	 */
 	public ChatFrame getBaseFrame()
 	{
 		return baseFrame;
