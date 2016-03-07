@@ -9,7 +9,7 @@ import chat.model.*;
 /**
  * Panel class for GUI interaction in the Chatbot Project
  * @author dvil4688
- * @version 1.3 12/4/15 Added panel layout in Design tab, added new quitButton, and changed some Strings.
+ * @version 1.4 2/23/16 Updating panel with a JScrollPane.
  */
 
 public class ChatPanel extends JPanel
@@ -21,20 +21,36 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private JTextField typingField;
 	private JLabel promptLabel;
+	private JScrollPane textPane;
+	private JButton tweetButton;
+	private JButton saveButton;
+	private JButton loadButton;
 	
 	public ChatPanel (ChatController botController)
 	{
 		this.botController = botController;
 		botLayout = new SpringLayout();
-		chatArea = new JTextArea(10,30);
-		typingField = new JTextField(30);
-		promptLabel = new JLabel("| ChatBot |");
+		chatArea = new JTextArea(10,25);
+		typingField = new JTextField(25);
+		promptLabel = new JLabel("||| ChatBot |||");
 		sayButton = new JButton("Say");
 		quitButton = new JButton("Quit");
 		
+		setupChatPane();
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	}
+	
+	private void setupChatPane()
+	{
+		textPane = new JScrollPane(chatArea);
+		
+		chatArea.setLineWrap(true);
+		chatArea.setWrapStyleWord(true);
+		chatArea.setEditable(false);
+		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
 	/**
@@ -44,10 +60,10 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(botLayout);
 		this.setBackground(Color.RED);
-		this.add(chatArea);
 		this.add(typingField);
 		this.add(sayButton);
 		this.add(quitButton); 
+		this.add(textPane);
 		this.add(promptLabel);
 		typingField.setToolTipText("Type here");
 		chatArea.setEnabled(false);
@@ -59,20 +75,25 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
-		botLayout.putConstraint(SpringLayout.SOUTH, typingField, -8, SpringLayout.SOUTH, this);
-		botLayout.putConstraint(SpringLayout.EAST, typingField, -91, SpringLayout.EAST, this);
-		botLayout.putConstraint(SpringLayout.SOUTH, quitButton, -6, SpringLayout.SOUTH, this);
-		botLayout.putConstraint(SpringLayout.WEST, typingField, 6, SpringLayout.EAST, quitButton);
-		botLayout.putConstraint(SpringLayout.WEST, quitButton, 0, SpringLayout.WEST, chatArea);
 		botLayout.putConstraint(SpringLayout.WEST, chatArea, 10, SpringLayout.WEST, this);
 		botLayout.putConstraint(SpringLayout.EAST, chatArea, -10, SpringLayout.EAST, this);
-		botLayout.putConstraint(SpringLayout.WEST, sayButton, 6, SpringLayout.EAST, typingField);
-		botLayout.putConstraint(SpringLayout.SOUTH, sayButton, -6, SpringLayout.SOUTH, this);
 		botLayout.putConstraint(SpringLayout.WEST, promptLabel, 0, SpringLayout.WEST, chatArea);
 		botLayout.putConstraint(SpringLayout.SOUTH, promptLabel, -6, SpringLayout.NORTH, chatArea);
 		botLayout.putConstraint(SpringLayout.EAST, promptLabel, 780, SpringLayout.WEST, chatArea);
 		botLayout.putConstraint(SpringLayout.NORTH, chatArea, 37, SpringLayout.NORTH, this);
 		botLayout.putConstraint(SpringLayout.SOUTH, chatArea, -8, SpringLayout.NORTH, typingField);
+		botLayout.putConstraint(SpringLayout.WEST, textPane, 110, SpringLayout.WEST, this);
+		botLayout.putConstraint(SpringLayout.EAST, textPane, -20, SpringLayout.EAST, this);
+		botLayout.putConstraint(SpringLayout.NORTH, textPane, 35, SpringLayout.NORTH, this);
+		botLayout.putConstraint(SpringLayout.WEST, quitButton, 0, SpringLayout.WEST, promptLabel);
+		botLayout.putConstraint(SpringLayout.SOUTH, quitButton, 0, SpringLayout.SOUTH, typingField);
+		botLayout.putConstraint(SpringLayout.SOUTH, textPane, 600, SpringLayout.NORTH, this);
+		botLayout.putConstraint(SpringLayout.SOUTH, sayButton, 0, SpringLayout.SOUTH, typingField);
+		botLayout.putConstraint(SpringLayout.EAST, sayButton, 0, SpringLayout.EAST, promptLabel);
+		botLayout.putConstraint(SpringLayout.WEST, typingField, 100, SpringLayout.WEST, this);
+		botLayout.putConstraint(SpringLayout.SOUTH, typingField, -10, SpringLayout.SOUTH, this);
+		botLayout.putConstraint(SpringLayout.EAST, typingField, -100, SpringLayout.EAST, this);
+		promptLabel.setFont(new Font("Avenir", Font.BOLD | Font.ITALIC, 17));
 		
 	}
 	
