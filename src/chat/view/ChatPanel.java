@@ -1,15 +1,17 @@
 package chat.view;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
+
 import chat.controller.ChatController;
 import chat.model.*;
 
 /**
  * Panel class for GUI interaction in the Chatbot Project
  * @author dvil4688
- * @version 1.4 2/23/16 Updating panel with a JScrollPane.
+ * @version 1.5 3/7/16 Added actionListener for tweetButton.
  */
 
 public class ChatPanel extends JPanel
@@ -18,13 +20,14 @@ public class ChatPanel extends JPanel
 	private SpringLayout botLayout;
 	private JButton sayButton;
 	private JButton quitButton;
+	private JButton saveButton;
+	private JButton loadButton;
+	private JButton tweetButton;
 	private JTextArea chatArea;
 	private JTextField typingField;
 	private JLabel promptLabel;
 	private JScrollPane textPane;
-	private JButton tweetButton;
-	private JButton saveButton;
-	private JButton loadButton;
+
 	
 	public ChatPanel (ChatController botController)
 	{
@@ -135,41 +138,50 @@ public class ChatPanel extends JPanel
 			}
 		});
 		
-		this.addMouseListener(new MouseListener()
+		tweetButton.addActionListener(new ActionListener()
 		{
-			public void mouseClicked(MouseEvent click)
+			public void actionPerformed(ActionEvent click)
 			{
-				changeColor();
+				botController.sendTweet("No txt to send");
 			}
-
-			@Override
-			public void mousePressed(MouseEvent e)
-			{
-				// Empty Placeholder
-				
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e)
-			{
-				// Empty Placeholder
-				
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e)
-			{
-				// Empty Placeholder
-				
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e)
-			{
-				// Empty Placeholder
-				
-			}
+			
 		});
+		
+//		this.addMouseListener(new MouseListener()
+//		{
+//			public void mouseClicked(MouseEvent click)
+//			{
+//				changeColor();
+//			}
+//
+//			@Override
+//			public void mousePressed(MouseEvent e)
+//			{
+//				// Empty Placeholder
+//				
+//			}
+//
+//			@Override
+//			public void mouseReleased(MouseEvent e)
+//			{
+//				// Empty Placeholder
+//				
+//			}
+//
+//			@Override
+//			public void mouseEntered(MouseEvent e)
+//			{
+//				// Empty Placeholder
+//				
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e)
+//			{
+//				// Empty Placeholder
+//				
+//			}
+//		});
 	}
 	
 	/**

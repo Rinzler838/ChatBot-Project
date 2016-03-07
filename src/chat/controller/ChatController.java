@@ -1,17 +1,18 @@
  package chat.controller;
 
-import chat.view.ChatFrame;
-import chat.view.ChatView;
+import chat.view.*;
 import chat.model.ChatBot;
+import chat.model.CTECTwitter;
 
 /**
  * Application controller for the Chatbot project.
  * @author Deigen Villalobos
- * @version 1.5 12/4/15 Deleted useless Chat() method, and
+ * @version 1.6 3/7/16 Added sendTweet method.
  */
 
 public class ChatController
 {
+	private CTECTwitter chatTwitter;
 	private ChatBot myBot;
 	private ChatView myDisplay;
 	private ChatFrame baseFrame;
@@ -22,6 +23,7 @@ public class ChatController
 		String userName = myDisplay.chatInput("Please type your Username below:");
 		myBot = new ChatBot(userName);
 		baseFrame = new ChatFrame(this);
+		chatTwitter = new CTECTwitter(this);
 	}
 	
 	/**
@@ -59,6 +61,16 @@ public class ChatController
 	{
 		myDisplay.showMessage("bzzzt...Farewell " + myBot.getUserName() + ", I'll be going now...bzzzt");
 		System.exit(0);
+	}
+	
+	public void sendTweet(String tweetText)
+	{
+		chatTwitter.sendTweet(tweetText);
+	}
+	
+	public void handleErrors(String errorMessage)
+	{
+		myDisplay.showMessage(errorMessage);
 	}
 	
 	/**
