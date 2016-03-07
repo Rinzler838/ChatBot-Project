@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.ArrayList;
+import twitter4j.*;
 
 /**
  * @author dvil4688
@@ -9,5 +10,6 @@ import java.util.ArrayList;
  */
 public class CTECTwitter
 {
-	
+	private ArrayList<Status> statusList;
+	private ArrayList<String> wordList;
 }
