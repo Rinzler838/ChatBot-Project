@@ -38,6 +38,7 @@ public class ChatPanel extends JPanel
 		promptLabel = new JLabel("||| ChatBot |||");
 		sayButton = new JButton("Say");
 		quitButton = new JButton("Quit");
+		tweetButton = new JButton("Tweet!");
 		
 		setupChatPane();
 		setupPanel();
@@ -66,6 +67,7 @@ public class ChatPanel extends JPanel
 		this.add(typingField);
 		this.add(sayButton);
 		this.add(quitButton); 
+		this.add(tweetButton);
 		this.add(textPane);
 		this.add(promptLabel);
 		typingField.setToolTipText("Type here");
@@ -97,6 +99,8 @@ public class ChatPanel extends JPanel
 		botLayout.putConstraint(SpringLayout.SOUTH, typingField, -10, SpringLayout.SOUTH, this);
 		botLayout.putConstraint(SpringLayout.EAST, typingField, -100, SpringLayout.EAST, this);
 		promptLabel.setFont(new Font("Avenir", Font.BOLD | Font.ITALIC, 17));
+		botLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -6, SpringLayout.NORTH, sayButton);
+		botLayout.putConstraint(SpringLayout.EAST, tweetButton, 0, SpringLayout.EAST, sayButton);
 		
 	}
 	
@@ -147,41 +151,41 @@ public class ChatPanel extends JPanel
 			
 		});
 		
-//		this.addMouseListener(new MouseListener()
-//		{
-//			public void mouseClicked(MouseEvent click)
-//			{
-//				changeColor();
-//			}
-//
-//			@Override
-//			public void mousePressed(MouseEvent e)
-//			{
-//				// Empty Placeholder
-//				
-//			}
-//
-//			@Override
-//			public void mouseReleased(MouseEvent e)
-//			{
-//				// Empty Placeholder
-//				
-//			}
-//
-//			@Override
-//			public void mouseEntered(MouseEvent e)
-//			{
-//				// Empty Placeholder
-//				
-//			}
-//
-//			@Override
-//			public void mouseExited(MouseEvent e)
-//			{
-//				// Empty Placeholder
-//				
-//			}
-//		});
+		this.addMouseListener(new MouseListener()
+		{
+			public void mouseClicked(MouseEvent click)
+			{
+				changeColor();
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e)
+			{
+				// Empty Placeholder
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e)
+			{
+				// Empty Placeholder
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e)
+			{
+				// Empty Placeholder
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e)
+			{
+				// Empty Placeholder
+				
+			}
+		});
 	}
 	
 	/**
