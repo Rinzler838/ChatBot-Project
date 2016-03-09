@@ -7,7 +7,7 @@ import chat.controller.ChatController;
 /**
  * @author Deigen Villalobos
  * @version 0.4 3/7/16 - Added code for sendTweet to handle errors.
- * This Class will allow ChatBot to access Twitter, interact with other users' Tweets, and Tweet itself.
+ * This class will allow ChatBot to access Twitter, interact with other users' Tweets, and Tweet itself.
  */
 public class CTECTwitter
 {

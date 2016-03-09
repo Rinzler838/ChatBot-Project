@@ -7,7 +7,7 @@ import chat.model.CTECTwitter;
 /**
  * Application controller for the Chatbot project.
  * @author Deigen Villalobos
- * @version 1.6 3/7/16 Added sendTweet method.
+ * @version 1.7 3/7/16 Added handleErrors method.
  */
 
 public class ChatController
@@ -63,11 +63,19 @@ public class ChatController
 		System.exit(0);
 	}
 	
+	/**
+	 * Sends a Tweet that contains the desired text.
+	 * @param tweetText
+	 */
 	public void sendTweet(String tweetText)
 	{
 		chatTwitter.sendTweet(tweetText);
 	}
 	
+	/**
+	 * Passes an error message when one is encountered.
+	 * @param errorMessage
+	 */
 	public void handleErrors(String errorMessage)
 	{
 		myDisplay.showMessage(errorMessage);
