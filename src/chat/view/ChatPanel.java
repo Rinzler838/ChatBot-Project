@@ -23,6 +23,7 @@ public class ChatPanel extends JPanel
 	private JButton saveButton;
 	private JButton loadButton;
 	private JButton tweetButton;
+	private JButton analyzeTweetButton;
 	private JTextArea chatArea;
 	private JTextField typingField;
 	private JLabel promptLabel;
@@ -39,6 +40,8 @@ public class ChatPanel extends JPanel
 		sayButton = new JButton("Say");
 		quitButton = new JButton("Quit");
 		tweetButton = new JButton("Tweet!");
+		analyzeTweetButton = new JButton("Analyze Tweets");
+		
 		
 		setupChatPane();
 		setupPanel();
@@ -68,6 +71,7 @@ public class ChatPanel extends JPanel
 		this.add(sayButton);
 		this.add(quitButton); 
 		this.add(tweetButton);
+		this.add(analyzeTweetButton);
 		this.add(textPane);
 		this.add(promptLabel);
 		typingField.setToolTipText("Type here");
@@ -101,6 +105,8 @@ public class ChatPanel extends JPanel
 		promptLabel.setFont(new Font("Avenir", Font.BOLD | Font.ITALIC, 17));
 		botLayout.putConstraint(SpringLayout.SOUTH, tweetButton, -6, SpringLayout.NORTH, sayButton);
 		botLayout.putConstraint(SpringLayout.EAST, tweetButton, 0, SpringLayout.EAST, sayButton);
+		botLayout.putConstraint(SpringLayout.NORTH, analyzeTweetButton, 0, SpringLayout.NORTH, tweetButton);
+		botLayout.putConstraint(SpringLayout.WEST, analyzeTweetButton, 0, SpringLayout.WEST, quitButton);
 		
 	}
 	
@@ -149,6 +155,16 @@ public class ChatPanel extends JPanel
 				botController.sendTweet("No txt to send");
 			}
 			
+		});
+		
+		analyzeTweetButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String user = typingField.getText();
+				String results = botController.analyze(user);
+				chatArea.setText(results);
+			}
 		});
 		
 		this.addMouseListener(new MouseListener()

@@ -72,6 +72,13 @@ public class ChatController
 		chatTwitter.sendTweet(tweetText);
 	}
 	
+	public String analyze(String userName)
+	{
+		String userAnalysis = "The Twitter user " + userName + "has ...";
+		
+		return userAnalysis;
+	}
+	
 	/**
 	 * Passes an error message when one is encountered.
 	 * @param errorMessage
