@@ -141,6 +141,15 @@ public class CTECTwitter
 	
 	private void removeTwitterUserNamesFromList(List<String> wordLsit)
 	{
-		
+		for (int wordCount = 0; wordCount < wordList.size(); wordCount++)
+		{
+			if (wordList.get(wordCount).length() >= 1 && wordList.get(wordCount).charAt(0) == '@')
+			{
+				wordList.remove(wordCount);
+				wordCount--;
+			}
+		}
 	}
+	
+	
 }
