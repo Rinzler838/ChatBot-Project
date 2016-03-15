@@ -1,6 +1,7 @@
 package chat.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import twitter4j.*;
 import chat.controller.ChatController;
 
@@ -54,7 +55,7 @@ public class CTECTwitter
 				wordList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWords(tweetTexts);
+		removeCommonEnglishWords(wordList);
 		removeEmptyText();
 	}
 	
@@ -73,8 +74,34 @@ public class CTECTwitter
 		return currentString;
 	}
 	
+	private void removeEmptyText()
+	{
+		for (int spot = 0; spot < wordList.size(); spot++)
+		{
+			if (wordList.get(spot).equals(""))
+			{
+				wordList.remove(spot);
+				spot--;	//Needed to go back a spot and re-check the list for redundant characters.
+			}
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
 	private List removeCommonEnglishWords(List<String> wordList)
 	{
+		String[] boringWords = importWordsToArray();
 		
+		for (int count = 0; count < wordList.size(); count++)
+		{
+			for (int removeSpot = 0; removeSpot < boringWords.length; removeSpot++)
+			{
+				if (wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					wordList.remove(count);
+					count--;
+					removeSpot = boringWords.length;
+				}
+			}
+		}
 	}
 }
