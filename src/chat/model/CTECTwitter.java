@@ -151,5 +151,35 @@ public class CTECTwitter
 		}
 	}
 	
+	public String topResults()
+	{
+		String tweetResults = "";
+		
+		int topWordLocation = 0;
+		int topCount = 0;
+		
+		for (int index = 0; index < wordList.size(); index++)
+		{
+			int wordUseCount = 1;
+			
+			for (int spot = index + 1; spot < wordList.size(); spot++)
+			{
+				if (wordList.get(index).equals(wordList.get(spot)))
+				{
+					wordUseCount++;
+				}
+				
+				if (wordUseCount > topCount)
+				{
+					topCount = wordUseCount;
+					topWordLocation = index;
+				}
+			}
+		}
+		
+		tweetResults = "The top word in those tweets was " + wordList.get(topWordLocation) + " and it was used " + topCount + " times.";
+		return tweetResults;
+	}
+	
 	
 }
