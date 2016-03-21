@@ -42,6 +42,8 @@ public class CTECTwitter
 	
 	public void loadTweets(String twitterHandle)throws TwitterException
 	{
+		statusList.clear();
+		wordList.clear();
 		Paging statusPage = new Paging(1, 200);
 		int page = 1;
 		while (page <= 10)
@@ -60,6 +62,30 @@ public class CTECTwitter
 		}
 		removeCommonEnglishWords(wordList);
 		removeEmptyText();
+	}
+	
+	private String[] importWordsToArray()
+	{
+		String[] boringWords;
+		int wordCount = 0;
+		
+		Scanner wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		while (wordFile.hasNext())
+		{
+			wordCount++;
+			wordFile.next();
+		}
+		wordFile.reset();
+		wordFile = new Scanner(getClass().getResourceAsStream("commonWords.txt"));
+		boringWords = new String[wordCount];
+		int boringWordCount = 0;
+		while (wordFile.hasNext())
+		{
+			boringWords[boringWordCount] = wordFile.next();
+			boringWordCount++;
+		}
+		wordFile.close();
+		return boringWords;
 	}
 	
 	private String removePunctuation(String currentString)
@@ -110,35 +136,6 @@ public class CTECTwitter
 		return wordList;
 	}
 	
-	private String[] importWordsToArray()
-	{
-		String[] boringWords;
-		int wordCount = 0;
-		try
-		{
-			Scanner wordFile = new Scanner(new File("commonWords.txt"));
-			while (wordFile.hasNext())
-			{
-				wordCount++;
-				wordFile.next();
-			}
-			wordFile.reset();
-			boringWords = new String[wordCount];
-			int boringWordCount = 0;
-			while (wordFile.hasNext())
-			{
-				boringWords[boringWordCount] = wordFile.next();
-				boringWordCount++;
-			}
-			wordFile.close();
-		}
-		catch (FileNotFoundException e)
-		{
-			return new String[0];
-		}
-		return boringWords;
-	}
-	
 	private void removeTwitterUserNamesFromList(List<String> wordLsit)
 	{
 		for (int wordCount = 0; wordCount < wordList.size(); wordCount++)
@@ -176,10 +173,31 @@ public class CTECTwitter
 				}
 			}
 		}
-		
-		tweetResults = "The top word in those tweets was " + wordList.get(topWordLocation) + " and it was used " + topCount + " times.";
+		tweetResults = "the top word in their tweets was " + wordList.get(topWordLocation) + " and it was used " + topCount + " times.";
 		return tweetResults;
 	}
 	
-	
+	public String sampleInvestigation()
+	{
+		String results = "";
+		
+		Query query = new Query("marathon");
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 5, Query.MILES);
+		query.setSince("2016-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results.concat("Count: " + result.getTweets().size());
+			for (Status tweet : result.getTweets())
+			{
+				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+			}
+		}
+		catch (TwitterException error)
+		{
+			error.printStackTrace();
+		}
+		return results;
+	}
 }

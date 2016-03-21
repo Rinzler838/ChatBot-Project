@@ -1,5 +1,6 @@
  package chat.controller;
 
+import twitter4j.TwitterException;
 import chat.view.*;
 import chat.model.ChatBot;
 import chat.model.CTECTwitter;
@@ -74,7 +75,17 @@ public class ChatController
 	
 	public String analyze(String userName)
 	{
-		String userAnalysis = "The Twitter user " + userName + "has " + chatTwitter.topResults() + "tweets";
+		String userAnalysis = "For the Twitter user: " + userName + ", " + chatTwitter.topResults();
+		//I learned that one can combine two Strings in completely different classes to create a coherent sentence that states results.
+		try
+		{
+			chatTwitter.loadTweets(userName);
+		}
+		catch (TwitterException error)
+		{
+			handleErrors(error.getErrorMessage());
+		}
+		userAnalysis += chatTwitter.topResults();
 		
 		return userAnalysis;
 	}
