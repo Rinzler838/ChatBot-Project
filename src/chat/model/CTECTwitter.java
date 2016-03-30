@@ -1,7 +1,5 @@
 package chat.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -177,21 +175,21 @@ public class CTECTwitter
 		return tweetResults;
 	}
 	
-	public String sampleInvestigation()
+	public String getData()
 	{
 		String results = "";
 		
-		Query query = new Query("marathon");
-		query.setCount(100);
-		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 5, Query.MILES);
-		query.setSince("2016-1-1");
+		Query myQuery = new Query("Infinity Blade");
+		myQuery.setCount(100);
+		//myQuery.setGeoCode(new GeoLocation(40.556498, -111.858935), 50, Query.MILES);
+		myQuery.setSince("2010-12-9");
 		try
 		{
-			QueryResult result = chatbotTwitter.search(query);
-			results.concat("Count: " + result.getTweets().size());
+			QueryResult result = chatbotTwitter.search(myQuery);
+			results += "Count: " + result.getTweets().size();
 			for (Status tweet : result.getTweets())
 			{
-				results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+				results += "@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n";
 			}
 		}
 		catch (TwitterException error)
@@ -199,5 +197,6 @@ public class CTECTwitter
 			error.printStackTrace();
 		}
 		return results;
+		
 	}
 }
