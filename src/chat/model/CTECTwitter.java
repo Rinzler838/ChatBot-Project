@@ -181,7 +181,7 @@ public class CTECTwitter
 		
 		Query myQuery = new Query("Infinity Blade");
 		myQuery.setCount(100);
-		//myQuery.setGeoCode(new GeoLocation(40.556498, -111.858935), 50, Query.MILES);
+		myQuery.setGeoCode(new GeoLocation(40.556498, -111.858935), 50, Query.MILES);
 		myQuery.setSince("2010-12-9");
 		try
 		{
